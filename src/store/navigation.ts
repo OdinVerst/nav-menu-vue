@@ -25,7 +25,6 @@ export const useNavigationStore = defineStore('navigation', {
             try {
                 const response = await axios.get(NAV_DATA_URL);
                 this.navigationData = buildNavigationTree(response.data);
-                console.log(this.navigationData);
             } catch (err: any) {
                 this.error = err;
             } finally {
