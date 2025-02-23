@@ -13,8 +13,8 @@
 
 <script>
 import NavigationList from './components/NavigationList.vue';
-import {onMounted} from "vue";
-import {useNavigationStore} from "./store/navigation.js";
+import { onMounted } from "vue";
+import { useNavigationStore } from "./store/navigation.js";
 
 export default {
   name: 'App',
@@ -30,3 +30,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+  }
+</style>

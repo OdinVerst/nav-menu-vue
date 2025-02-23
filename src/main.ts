@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia'
 import App from './App.vue';
-import {createRouter, createWebHistory, RouteLocationNormalized} from 'vue-router';
+import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router';
 
 import DynamicPage from './pages/DynamicPage.vue';
 import HomePage from './pages/HomePage.vue';
