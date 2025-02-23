@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia'
 import App from './App.vue';
-import {createRouter, createWebHistory} from 'vue-router';
+import {createRouter, createWebHistory, RouteLocationNormalized} from 'vue-router';
 
 import DynamicPage from './pages/DynamicPage.vue';
 import HomePage from './pages/HomePage.vue';
@@ -16,7 +16,7 @@ const routes = [
         path: '/:pageSlug(.*)',
         name: 'DynamicPage',
         component: DynamicPage,
-        props: route => ({ pageSlug: route.params.pageSlug })
+        props: (route: RouteLocationNormalized) => ({ pageSlug: route.params.pageSlug })
     }
 ];
 
