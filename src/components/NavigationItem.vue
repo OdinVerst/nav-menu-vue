@@ -89,6 +89,7 @@ const handleClick = () => {
 .navigationItem__link {
   color: currentColor;
   text-decoration: none;
+  line-height: 20px;
 }
 
 .navigationItem__wrapper {
