@@ -24,18 +24,18 @@
 </template>
 
 <script setup lang="ts">
-import { watchThrottled } from "@vueuse/core";
-import { ref } from "vue";
+import { watchDebounced } from "@vueuse/core";
+import { shallowRef } from 'vue'
 
-const searchQuery = ref("");
+const searchQuery = shallowRef("");
 const emit = defineEmits(["update:search"]);
 
-watchThrottled(
+watchDebounced(
   searchQuery,
   (newValue) => {
     emit("update:search", newValue.trim());
   },
-  { throttle: 500 },
+  { debounce: 500 },
 );
 
 const clearSearch = () => {
