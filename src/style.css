@@ -1,6 +1,8 @@
 :root {
     --color-text: #424650;
     --color-text-accent: #006ce0;
+    --color-icon: #424650FF;
+    --color-icon-accent: #006ce0;
     --size-spacer-item-nav: 8px;
 }
 

@@ -2,7 +2,7 @@
   <li class="navigationItem">
     <div class="navigationItem__wrapper">
       <button class="navigationItem__toggleButton" @click="toggleOpen" v-if="item.children && item.children.length" >
-        {{ isOpen ? '▲' : '▼' }}
+        <IconArrow :isOpen="isOpen" />
       </button>
       <router-link v-if="item.link" activeClass="navigationItem__link_active" class="navigationItem__link" :to="item.link" @click="handleClick">
         <span>{{ item.name }}</span>
@@ -18,6 +18,7 @@
 import { NavigationItemType } from "../types/navigationItemType";
 import { ref } from 'vue';
 import { useNavigationStore } from "../store/navigation";
+import IconArrow from "./IconArrow.vue";
 
 const props = defineProps<{
   item: NavigationItemType;
@@ -48,10 +49,18 @@ const handleClick = () => {
 }
 
 .navigationItem__toggleButton {
+  flex-shrink: 0;
   background: transparent;
   border: none;
   width: 20px;
   margin-left: -25px;
+  padding: 0;
+  color: var(--color-icon);
+  cursor: pointer;
+}
+
+.navigationItem__toggleButton:hover {
+  color: var(--color-icon-accent);
 }
 
 .navigationItem__childrenList {
