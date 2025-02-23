@@ -52,7 +52,6 @@ const clearSearch = () => {
   border-radius: 8px;
   padding: 5px 8px;
   width: 100%;
-  max-width: 300px;
   background-color: var(--color-background);
 }
 

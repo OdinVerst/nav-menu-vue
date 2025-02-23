@@ -64,6 +64,12 @@ export default {
   gap: 10px;
 }
 
+@media (max-width: 630px) {
+  .navigationList__wrapper {
+    max-height: 440px;
+  }
+}
+
 .navigationList__content {
   overflow: auto;
 }

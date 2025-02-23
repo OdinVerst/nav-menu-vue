@@ -37,4 +37,10 @@ export default {
   grid-template-columns: 280px 1fr;
   gap: 10px;
 }
+
+@media (max-width: 630px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
