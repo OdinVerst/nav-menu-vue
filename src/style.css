@@ -2,6 +2,9 @@
     --color-text: #424650;
     --color-text-accent: #006ce0;
     --color-icon: #424650FF;
+    --color-border: #ccc;
+    --color-background: #fff;
+    --color-placeholder: #666;
     --color-icon-accent: #006ce0;
     --size-spacer-item-nav: 8px;
 }

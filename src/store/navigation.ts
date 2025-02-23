@@ -5,12 +5,14 @@ import {buildNavigationTree} from "../helpers/buildNavigationTree";
 import {findCurrentPage} from "../helpers/findCurrentPage";
 import {NavigationItemType} from "../types/navigationItemType";
 import {useRoute} from "vue-router";
+import {flattenAndFilterNavigation} from "../helpers/flattenAndFilterNavigation";
 
 interface NavigationState {
     navigationData: NavigationItemType[];
     currentPage: NavigationItemType | null;
     loading: boolean;
     error: Error | null;
+    searchQuery: string;
 }
 
 const NAV_DATA_URL = 'https://prolegomenon.s3.amazonaws.com/contents.json';
@@ -20,7 +22,8 @@ export const useNavigationStore = defineStore('navigation', {
         navigationData: [],
         currentPage: null,
         loading: false,
-        error: null
+        error: null,
+        searchQuery: ""
     }),
     actions: {
         async fetchNavigationData() {
@@ -39,11 +42,21 @@ export const useNavigationStore = defineStore('navigation', {
         },
         setCurrentPage(link: string) {
             this.currentPage = findCurrentPage(this.navigationData, link);
-        }
+        },
+        setSearchQuery(query: string) {
+            this.searchQuery = query.toLowerCase();
+        },
     },
     getters: {
         getNavigationData: (state) => state.navigationData,
         getCurrentPage: (state) => state.currentPage,
+        getFilteredNavigationData(state): NavigationItemType[] {
+            if (!state.searchQuery) return state.navigationData;
+
+            console.log(flattenAndFilterNavigation(state.navigationData, state.searchQuery))
+            return flattenAndFilterNavigation(state.navigationData, state.searchQuery);
+        },
+        getSearchQuery: (state) => state.searchQuery,
         isLoading: (state) => state.loading,
         getError: (state) => state.error,
     }

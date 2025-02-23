@@ -15,10 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import { NavigationItemType } from "../types/navigationItemType";
+import { NavigationItemType } from '../types/navigationItemType';
 import { ref } from 'vue';
-import { useNavigationStore } from "../store/navigation";
-import IconArrow from "./IconArrow.vue";
+import { useNavigationStore } from '../store/navigation';
+import IconArrow from './IconArrow.vue';
 
 const props = defineProps<{
   item: NavigationItemType;
@@ -26,7 +26,7 @@ const props = defineProps<{
 }>();
 
 const navigationStore = useNavigationStore();
-const {activePath, item} = props;
+const { activePath, item } = props;
 
 const isOpen = ref((activePath || []).includes(item.key) || false);
 

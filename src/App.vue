@@ -35,5 +35,6 @@ export default {
   .container {
     display: grid;
     grid-template-columns: 280px 1fr;
+    gap: 10px;
   }
 </style>
