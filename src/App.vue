@@ -13,10 +13,10 @@
 
 <script>
 import NavigationList from "./components/NavigationList.vue";
-import { onMounted } from "vue";
+import { defineComponent, onMounted } from 'vue'
 import { useNavigationStore } from "./store/navigation.js";
 
-export default {
+export default defineComponent({
   name: "App",
   components: {
     NavigationList,
@@ -28,7 +28,7 @@ export default {
       navigationStore.fetchNavigationData();
     });
   },
-};
+});
 </script>
 
 <style scoped>

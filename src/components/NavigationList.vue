@@ -23,13 +23,13 @@
 </template>
 
 <script lang="ts">
-import { computed } from "vue";
+import { computed, defineComponent } from 'vue'
 import { useNavigationStore } from "../store/navigation";
 import NavigationItem from "./NavigationItem.vue";
 import SearchInput from "./SearchInput.vue";
 import SearchResult from "./SearchResult.vue";
 
-export default {
+export default defineComponent({
   name: "NavigationList",
   components: { SearchResult, SearchInput, NavigationItem },
   setup() {
@@ -47,7 +47,7 @@ export default {
       error: computed(() => navigationStore.getError),
     };
   },
-};
+});
 </script>
 
 <style scoped>

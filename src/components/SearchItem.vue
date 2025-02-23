@@ -19,9 +19,7 @@ import { useNavigationStore } from "../store/navigation";
 const props = defineProps<{
   item: NavigationItemType;
 }>();
-
 const navigationStore = useNavigationStore();
-const { item } = props;
 
 const handleClick = () => {
   if (props.item.link) {
