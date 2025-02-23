@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import {buildNavigationTree} from "./helpers/heplpers";
-import {NavigationItemType} from "../types/navigationItemType";
 
+import {buildNavigationTree} from "../helpers/heplpers";
+import {NavigationItemType} from "../types/navigationItemType";
 
 interface NavigationState {
     navigationData: NavigationItemType[];

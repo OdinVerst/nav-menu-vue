@@ -1,4 +1,4 @@
-import {NavigationItemType} from "../../types/navigationItemType";
+import {NavigationItemType} from "../types/navigationItemType";
 
 interface ServerResponse {
     pages: Record<string, NavigationItemType & { childPageKeys?: string[] }>;

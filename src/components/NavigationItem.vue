@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NavigationItemType } from '@/types/navigation';
+import {NavigationItemType} from "../types/navigationItemType";
 import { ref } from 'vue';
 
 defineProps<{
@@ -16,7 +16,9 @@ const toggleOpen = () => {
 <template>
   <li>
     <div class="item-container" @click="toggleOpen">
-      <span>{{ item.name }}</span>
+      <router-link v-if="item.link" :to="item.link" activeClass="border-indigo-500">
+        <span>{{ item.name }}</span>
+      </router-link>
       <button v-if="item.children && item.children.length" class="toggle-btn">
         {{ isOpen ? '▲' : '▼' }}
       </button>
@@ -26,22 +28,3 @@ const toggleOpen = () => {
     </ul>
   </li>
 </template>
-
-<style scoped>
-.item-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.toggle-btn {
-  margin-left: 8px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-}
-.nested-list {
-  padding-left: 16px;
-}
-</style>

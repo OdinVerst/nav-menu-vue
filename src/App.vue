@@ -5,8 +5,7 @@
         <NavigationList />
       </aside>
       <main class="content">
-        <h1>Добро пожаловать!</h1>
-        <p>Здесь будет основной контент, связанный с выбранным пунктом меню.</p>
+        <router-view />
       </main>
     </div>
   </div>
@@ -14,11 +13,20 @@
 
 <script>
 import NavigationList from './components/NavigationList.vue';
+import {onMounted} from "vue";
+import {useNavigationStore} from "./store/navigation.js";
 
 export default {
   name: 'App',
   components: {
     NavigationList,
   },
+  setup() {
+    const navigationStore = useNavigationStore();
+
+    onMounted(() => {
+      navigationStore.fetchNavigationData();
+    });
+  }
 }
 </script>
