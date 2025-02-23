@@ -1,16 +1,17 @@
 <template>
   <div class="navigationList">
-    <h2 class="navigationList__title">Nav menu</h2>
     <div class="navigationList__loader" v-if="loading">Loading...</div>
-    <div v-else>
+    <div class="navigationList__wrapper" v-else>
       <SearchInput @update:search="setSearchQuery" />
-      <SearchResult v-if="searchQuery" :items="filteredNavigationData" />
-      <div v-else>
-        <nav>
-          <ul class="navigationList__list">
-            <NavigationItem v-for="item in navigationData" :key="item.key" :item="item" :active-path="activePath" />
-          </ul>
-        </nav>
+      <div class="navigationList__content">
+        <SearchResult v-if="searchQuery" :items="filteredNavigationData" />
+        <div v-else>
+          <nav>
+            <ul class="navigationList__list">
+              <NavigationItem v-for="item in navigationData" :key="item.key" :item="item" :active-path="activePath" />
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
@@ -43,12 +44,20 @@ export default {
 </script>
 
 <style scoped>
-  .navigationList {
-    margin-top: 25px;
-  }
-
   .navigationList__list {
     list-style-type: none;
     font-size: 14px;
+  }
+
+  .navigationList__wrapper {
+    display: grid;
+    grid-template-rows: 35px 1fr;
+    overflow: hidden;
+    max-height: calc(100vh - 16px);
+    gap: 10px;
+  }
+
+  .navigationList__content {
+    overflow: auto;
   }
 </style>
