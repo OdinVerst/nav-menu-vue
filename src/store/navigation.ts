@@ -30,12 +30,15 @@ export const useNavigationStore = defineStore('navigation', {
                 const route = useRoute();
                 const response = await axios.get(NAV_DATA_URL);
                 this.navigationData = buildNavigationTree(response.data);
-                this.currentPage = findCurrentPage(this.navigationData, route.path.toLowerCase());
+                this.setCurrentPage(route.path.toLowerCase());
             } catch (err: any) {
                 this.error = err;
             } finally {
                 this.loading = false;
             }
+        },
+        setCurrentPage(link: string) {
+            this.currentPage = findCurrentPage(this.navigationData, link);
         }
     },
     getters: {
