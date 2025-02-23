@@ -34,6 +34,6 @@ export default {
 <style scoped>
   .navigationList__list {
     list-style-type: none;
-    padding: 0;
+    font-size: 14px;
   }
 </style>

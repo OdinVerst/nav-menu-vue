@@ -1,6 +1,7 @@
 :root {
     --color-text: #424650;
     --color-text-accent: #006ce0;
+    --size-spacer-item-nav: 8px;
 }
 
 *, *::after, *::before {
@@ -10,4 +11,8 @@
 body {
     font-family: 'Roboto', sans-serif;
     color: var(--color-text);
+}
+
+ul {
+    padding-inline-start: 25px;
 }

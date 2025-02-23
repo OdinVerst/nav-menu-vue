@@ -43,18 +43,31 @@ const handleClick = () => {
 </script>
 
 <style scoped>
+.navigationItem {
+  margin-bottom: var(--size-spacer-item-nav);
+}
+
 .navigationItem__toggleButton {
   background: transparent;
   border: none;
+  width: 20px;
+  margin-left: -25px;
 }
 
 .navigationItem__childrenList {
   list-style-type: none;
+  margin-top: var(--size-spacer-item-nav);
 }
 
 .navigationItem__link {
   color: currentColor;
   text-decoration: none;
+}
+
+.navigationItem__wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
 }
 
 .navigationItem__link:hover {
