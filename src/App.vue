@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import NavigationList from "./components/NavigationList.vue";
 import { defineComponent, onMounted } from 'vue'
 import { useNavigationStore } from "./store/navigation.js";

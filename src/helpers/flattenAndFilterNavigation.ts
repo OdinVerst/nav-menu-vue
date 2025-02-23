@@ -5,7 +5,7 @@ export const flattenAndFilterNavigation = (
   searchQuery: string,
 ): NavigationItemType[] => {
   return items.reduce((acc: NavigationItemType[], item) => {
-    if (item.name.toLowerCase().includes(searchQuery)) {
+    if (item.name.toLowerCase().includes(searchQuery.toLowerCase())) {
       acc.push(item);
     }
 
