@@ -1,5 +1,23 @@
-# Vue 3 + Vite
+#  Vue Navigation App
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Приложение на **Vue 3** с **Pinia** и **Vue Router**. Реализована динамическая навигация, поиск и хранение состояния.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Функциональность  
+- Динамическое меню с вложенными пунктами  
+- Поиск по навигации  
+- Подсветка активного элемента  
+- Динамическая маршрутизация страниц  
+- Управление состоянием в Pinia  
+
+## 🛠️ Технологии  
+- **Vue 3 + TypeScript**  
+- **Vue Router, Pinia**  
+- **Axios**  
+
+## 📥 Установка и запуск  
+```sh
+npm install
+npm run dev
+ ```
+
+Демо: https://nav-menu-vue.vercel.app/
