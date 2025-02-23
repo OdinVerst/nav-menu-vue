@@ -16,6 +16,7 @@ defineProps<{ isOpen: boolean }>()
 
 <style scoped>
 .iconArrow {
+  width: 20px;
   transition: transform 0.2s ease-in-out;
   fill: currentColor;
   transform: rotate(-90deg);
