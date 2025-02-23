@@ -44,9 +44,8 @@ const props = defineProps<{
 }>();
 
 const navigationStore = useNavigationStore();
-const { activePath, item } = props;
 
-const isOpen = ref((activePath || []).includes(item.key) || false);
+const isOpen = ref((props.activePath || []).includes(props.item.key) || false);
 
 const toggleOpen = () => {
   isOpen.value = !isOpen.value;
