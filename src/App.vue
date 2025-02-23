@@ -11,23 +11,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import NavigationList from "./components/NavigationList.vue";
-import { defineComponent, onMounted } from 'vue'
-import { useNavigationStore } from "./store/navigation.js";
+<script setup lang="ts">
+import { onMounted } from 'vue';
+import NavigationList from './components/NavigationList.vue';
+import { useNavigationStore } from './store/navigation';
 
-export default defineComponent({
-  name: "App",
-  components: {
-    NavigationList,
-  },
-  setup() {
-    const navigationStore = useNavigationStore();
+const navigationStore = useNavigationStore();
 
-    onMounted(() => {
-      navigationStore.fetchNavigationData();
-    });
-  },
+onMounted(() => {
+  navigationStore.fetchNavigationData();
 });
 </script>
 

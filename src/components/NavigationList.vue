@@ -22,32 +22,21 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue'
+<script setup lang="ts">
+import { computed } from 'vue'
 import { useNavigationStore } from "../store/navigation";
 import NavigationItem from "./NavigationItem.vue";
 import SearchInput from "./SearchInput.vue";
 import SearchResult from "./SearchResult.vue";
 
-export default defineComponent({
-  name: "NavigationList",
-  components: { SearchResult, SearchInput, NavigationItem },
-  setup() {
-    const navigationStore = useNavigationStore();
+const navigationStore = useNavigationStore();
 
-    return {
-      navigationData: computed(() => navigationStore.getNavigationData),
-      activePath: computed(() => navigationStore.getCurrentPage?.path ?? null),
-      setSearchQuery: computed(() => navigationStore.setSearchQuery),
-      filteredNavigationData: computed(
-        () => navigationStore.getFilteredNavigationData,
-      ),
-      searchQuery: computed(() => navigationStore.getSearchQuery),
-      loading: computed(() => navigationStore.isLoading),
-      error: computed(() => navigationStore.getError),
-    };
-  },
-});
+const navigationData = computed(() => navigationStore.getNavigationData);
+const activePath = computed(() => navigationStore.getCurrentPage?.path ?? null);
+const setSearchQuery = (query: string) => navigationStore.setSearchQuery(query);
+const filteredNavigationData = computed(() => navigationStore.getFilteredNavigationData);
+const searchQuery = computed(() => navigationStore.getSearchQuery);
+const loading = computed(() => navigationStore.isLoading);
 </script>
 
 <style scoped>

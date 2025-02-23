@@ -8,32 +8,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from "vue";
+<script setup lang="ts">
+import { computed } from "vue";
 import { useNavigationStore } from "../store/navigation";
 
-export default defineComponent({
-  name: "DynamicPage",
-  props: {
-    pageSlug: {
-      type: String,
-      required: true,
-    },
-  },
-  setup() {
-    const navigationStore = useNavigationStore();
-
-    return {
-      title: computed(
-        () => navigationStore.getCurrentPage?.name ?? "Page not found",
-      ),
-      description: computed(() =>
-        navigationStore.getCurrentPage?.name
-          ? `Content "${navigationStore.getCurrentPage.name}" article`
-          : "",
-      ),
-      loading: computed(() => navigationStore.isLoading),
-    };
+defineProps({
+  pageSlug: {
+    type: String,
+    required: true,
   },
 });
+
+const navigationStore = useNavigationStore();
+
+const title = computed(() => navigationStore.getCurrentPage?.name ?? "Page not found");
+const description = computed(() =>
+  navigationStore.getCurrentPage?.name
+    ? `Content "${navigationStore.getCurrentPage.name}" article`
+    : ""
+);
+const loading = computed(() => navigationStore.isLoading);
 </script>
