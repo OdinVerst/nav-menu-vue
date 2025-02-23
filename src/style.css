@@ -1,7 +1,13 @@
+:root {
+    --color-text: #424650;
+    --color-text-accent: #006ce0;
+}
+
 *, *::after, *::before {
   box-sizing: border-box;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
+    color: var(--color-text);
 }

@@ -1,3 +1,19 @@
+<template>
+  <li class="navigationItem">
+    <div class="navigationItem__wrapper">
+      <button class="navigationItem__toggleButton" @click="toggleOpen" v-if="item.children && item.children.length" >
+        {{ isOpen ? '▲' : '▼' }}
+      </button>
+      <router-link v-if="item.link" activeClass="navigationItem__link_active" class="navigationItem__link" :to="item.link" @click="handleClick">
+        <span>{{ item.name }}</span>
+      </router-link>
+    </div>
+    <ul v-if="isOpen && item.children && item.children.length" class="navigationItem__childrenList">
+      <NavigationItem v-for="child in item.children" :key="child.key" :item="child" :active-path="activePath" />
+    </ul>
+  </li>
+</template>
+
 <script setup lang="ts">
 import { NavigationItemType } from "../types/navigationItemType";
 import { ref } from 'vue';
@@ -18,6 +34,7 @@ const toggleOpen = () => {
 };
 
 const handleClick = () => {
+  isOpen.value = true;
   if (props.item.link) {
     navigationStore.setCurrentPage(props.item.link);
   }
@@ -25,22 +42,27 @@ const handleClick = () => {
 
 </script>
 
-<template>
-  <li>
-    <div class="item-container" @click="toggleOpen">
-      <button v-if="item.children && item.children.length" class="toggle-btn">
-        {{ isOpen ? '▲' : '▼' }}
-      </button>
-      <router-link v-if="item.link" :to="item.link" activeClass="border-indigo-500" @click="handleClick">
-        <span>{{ item.name }}</span>
-      </router-link>
-    </div>
-    <ul v-if="isOpen && item.children && item.children.length" class="nested-list">
-      <NavigationItem v-for="child in item.children" :key="child.key" :item="child" :active-path="activePath" />
-    </ul>
-  </li>
-</template>
+<style scoped>
+.navigationItem__toggleButton {
+  background: transparent;
+  border: none;
+}
 
-<style>
+.navigationItem__childrenList {
+  list-style-type: none;
+}
 
+.navigationItem__link {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.navigationItem__link:hover {
+  color: var(--color-text-accent);
+}
+
+.navigationItem__link_active {
+  font-weight: bold;
+  color: var(--color-text-accent);
+}
 </style>
