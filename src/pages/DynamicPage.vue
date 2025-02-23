@@ -9,11 +9,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, computed, onMounted} from 'vue';
-import { useRoute } from 'vue-router';
+import {defineComponent, computed} from 'vue';
 import { useNavigationStore } from '../store/navigation';
-import {onBeforeUpdate} from "@vue/runtime-core";
-import {findCurrentPage} from "../helpers/findCurrentPage";
 
 export default defineComponent({
   name: 'DynamicPage',
@@ -24,31 +21,13 @@ export default defineComponent({
     }
   },
   setup() {
-    const route = useRoute();
     const navigationStore = useNavigationStore();
 
-    const pageTitle = ref('');
-    const pageContent = ref('');
-
-    const updateCurrentPage = () => {
-      const matchedPage = findCurrentPage(navigationStore.getNavigationData, route.path.toLowerCase());
-
-      const namePage = matchedPage?.name ?? null;
-      pageTitle.value = namePage ?? 'Page not found';
-      pageContent.value = namePage ? `Content "${matchedPage.name}" article` : '';
-    };
-
-    onMounted(() => {
-      updateCurrentPage();
-    });
-
-    onBeforeUpdate(() => {
-      updateCurrentPage();
-    });
-
     return {
-      title: computed(() => pageTitle.value),
-      description: computed(() => pageContent.value),
+      title: computed(() => navigationStore.getCurrentPage?.name ?? 'Page not found'),
+      description: computed(() =>
+          navigationStore.getCurrentPage?.name ? `Content "${navigationStore.getCurrentPage.name}" article` : ''
+      ),
       loading: computed(() => navigationStore.isLoading),
     };
   }

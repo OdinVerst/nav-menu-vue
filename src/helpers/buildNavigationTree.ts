@@ -8,12 +8,13 @@ interface ServerResponse {
 export const buildNavigationTree = (response: ServerResponse): NavigationItemType[] => {
     const { pages, rootLevelKeys } = response;
 
-    const buildNode = (key: string): NavigationItemType => {
+    const buildNode = (key: string, path?: string[]): NavigationItemType => {
         const page = pages[key];
-        const node: NavigationItemType = { ...page, children: [] };
+        const fullPath = path ? [...path, page.key] : [page.key];
+        const node: NavigationItemType = { ...page, children: [], path: fullPath };
 
         if (page.childPageKeys && page.childPageKeys.length > 0) {
-            node.children = page.childPageKeys.map(childKey => buildNode(childKey));
+            node.children = page.childPageKeys.map(childKey => buildNode(childKey, fullPath));
         }
         return node;
     }

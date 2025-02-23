@@ -5,4 +5,5 @@ export interface NavigationItemType {
     link: string;
     parentKey?: string;
     children?: NavigationItemType[];
+    path?: string[]
 }
