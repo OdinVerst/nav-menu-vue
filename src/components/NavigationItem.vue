@@ -49,6 +49,7 @@ const handleClick = () => {
 }
 
 .navigationItem__toggleButton {
+  display: flex;
   flex-shrink: 0;
   background: transparent;
   border: none;
