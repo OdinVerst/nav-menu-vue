@@ -3,6 +3,8 @@ import { createPinia } from 'pinia'
 import App from './App.vue';
 import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router';
 
+import "./style.css";
+
 import DynamicPage from './pages/DynamicPage.vue';
 import HomePage from './pages/HomePage.vue';
 
