@@ -1,24 +1,42 @@
 <template>
   <li class="navigationItem">
     <div class="navigationItem__wrapper">
-      <button class="navigationItem__toggleButton" @click="toggleOpen" v-if="item.children && item.children.length" >
+      <button
+        class="navigationItem__toggleButton"
+        @click="toggleOpen"
+        v-if="item.children && item.children.length"
+      >
         <IconArrow :isOpen="isOpen" />
       </button>
-      <router-link v-if="item.link" activeClass="navigationItem__link_active" class="navigationItem__link" :to="item.link" @click="handleClick">
+      <router-link
+        v-if="item.link"
+        activeClass="navigationItem__link_active"
+        class="navigationItem__link"
+        :to="item.link"
+        @click="handleClick"
+      >
         <span>{{ item.name }}</span>
       </router-link>
     </div>
-    <ul v-if="isOpen && item.children && item.children.length" class="navigationItem__childrenList">
-      <NavigationItem v-for="child in item.children" :key="child.key" :item="child" :active-path="activePath" />
+    <ul
+      v-if="isOpen && item.children && item.children.length"
+      class="navigationItem__childrenList"
+    >
+      <NavigationItem
+        v-for="child in item.children"
+        :key="child.key"
+        :item="child"
+        :active-path="activePath"
+      />
     </ul>
   </li>
 </template>
 
 <script setup lang="ts">
-import { NavigationItemType } from '../types/navigationItemType';
-import { ref } from 'vue';
-import { useNavigationStore } from '../store/navigation';
-import IconArrow from './IconArrow.vue';
+import { NavigationItemType } from "../types/navigationItemType";
+import { ref } from "vue";
+import { useNavigationStore } from "../store/navigation";
+import IconArrow from "./IconArrow.vue";
 
 const props = defineProps<{
   item: NavigationItemType;
@@ -40,7 +58,6 @@ const handleClick = () => {
     navigationStore.setCurrentPage(props.item.link);
   }
 };
-
 </script>
 
 <style scoped>

@@ -8,7 +8,12 @@
         <div v-else>
           <nav>
             <ul class="navigationList__list">
-              <NavigationItem v-for="item in navigationData" :key="item.key" :item="item" :active-path="activePath" />
+              <NavigationItem
+                v-for="item in navigationData"
+                :key="item.key"
+                :item="item"
+                :active-path="activePath"
+              />
             </ul>
           </nav>
         </div>
@@ -18,15 +23,15 @@
 </template>
 
 <script lang="ts">
-import { computed } from 'vue';
-import { useNavigationStore } from '../store/navigation'
-import NavigationItem from './NavigationItem.vue';
+import { computed } from "vue";
+import { useNavigationStore } from "../store/navigation";
+import NavigationItem from "./NavigationItem.vue";
 import SearchInput from "./SearchInput.vue";
 import SearchResult from "./SearchResult.vue";
 
 export default {
-  name: 'NavigationList',
-  components: {SearchResult, SearchInput, NavigationItem },
+  name: "NavigationList",
+  components: { SearchResult, SearchInput, NavigationItem },
   setup() {
     const navigationStore = useNavigationStore();
 
@@ -34,30 +39,32 @@ export default {
       navigationData: computed(() => navigationStore.getNavigationData),
       activePath: computed(() => navigationStore.getCurrentPage?.path ?? null),
       setSearchQuery: computed(() => navigationStore.setSearchQuery),
-      filteredNavigationData: computed(() => navigationStore.getFilteredNavigationData),
+      filteredNavigationData: computed(
+        () => navigationStore.getFilteredNavigationData,
+      ),
       searchQuery: computed(() => navigationStore.getSearchQuery),
       loading: computed(() => navigationStore.isLoading),
       error: computed(() => navigationStore.getError),
     };
-  }
+  },
 };
 </script>
 
 <style scoped>
-  .navigationList__list {
-    list-style-type: none;
-    font-size: 14px;
-  }
+.navigationList__list {
+  list-style-type: none;
+  font-size: 14px;
+}
 
-  .navigationList__wrapper {
-    display: grid;
-    grid-template-rows: 35px 1fr;
-    overflow: hidden;
-    max-height: calc(100vh - 16px);
-    gap: 10px;
-  }
+.navigationList__wrapper {
+  display: grid;
+  grid-template-rows: 35px 1fr;
+  overflow: hidden;
+  max-height: calc(100vh - 16px);
+  gap: 10px;
+}
 
-  .navigationList__content {
-    overflow: auto;
-  }
+.navigationList__content {
+  overflow: auto;
+}
 </style>

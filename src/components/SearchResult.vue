@@ -2,15 +2,13 @@
   <div class="searchResults">
     <ul v-if="items.length" class="searchResults__list">
       <SearchItem
-          v-for="item in items"
-          :key="item.key"
-          :item="item"
-          :active-path="null"
+        v-for="item in items"
+        :key="item.key"
+        :item="item"
+        :active-path="null"
       />
     </ul>
-    <div v-else class="searchResults__empty">
-      Nothing found
-    </div>
+    <div v-else class="searchResults__empty">Nothing found</div>
   </div>
 </template>
 

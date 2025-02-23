@@ -9,27 +9,31 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, computed} from 'vue';
-import { useNavigationStore } from '../store/navigation';
+import { defineComponent, computed } from "vue";
+import { useNavigationStore } from "../store/navigation";
 
 export default defineComponent({
-  name: 'DynamicPage',
+  name: "DynamicPage",
   props: {
     pageSlug: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   setup() {
     const navigationStore = useNavigationStore();
 
     return {
-      title: computed(() => navigationStore.getCurrentPage?.name ?? 'Page not found'),
+      title: computed(
+        () => navigationStore.getCurrentPage?.name ?? "Page not found",
+      ),
       description: computed(() =>
-          navigationStore.getCurrentPage?.name ? `Content "${navigationStore.getCurrentPage.name}" article` : ''
+        navigationStore.getCurrentPage?.name
+          ? `Content "${navigationStore.getCurrentPage.name}" article`
+          : "",
       ),
       loading: computed(() => navigationStore.isLoading),
     };
-  }
+  },
 });
 </script>

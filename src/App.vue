@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import NavigationList from './components/NavigationList.vue';
+import NavigationList from "./components/NavigationList.vue";
 import { onMounted } from "vue";
 import { useNavigationStore } from "./store/navigation.js";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     NavigationList,
   },
@@ -27,14 +27,14 @@ export default {
     onMounted(() => {
       navigationStore.fetchNavigationData();
     });
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-  .container {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 10px;
-  }
+.container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 10px;
+}
 </style>

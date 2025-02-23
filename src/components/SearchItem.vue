@@ -1,10 +1,11 @@
 <template>
   <li class="searchItem">
     <router-link
-        v-if="item.link"
-        activeClass="searchItem__link_active"
-        class="searchItem__link" :to="item.link"
-        @click="handleClick"
+      v-if="item.link"
+      activeClass="searchItem__link_active"
+      class="searchItem__link"
+      :to="item.link"
+      @click="handleClick"
     >
       <span>{{ item.name }}</span>
     </router-link>
@@ -27,7 +28,6 @@ const handleClick = () => {
     navigationStore.setCurrentPage(props.item.link);
   }
 };
-
 </script>
 
 <style scoped>
